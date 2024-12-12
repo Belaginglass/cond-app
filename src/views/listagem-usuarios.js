@@ -16,6 +16,13 @@ const baseURL = `${BASE_URL}/usuarios`;
 function ListagemUsuarios() {
     const [dados, setDados] = React.useState(null);
 
+    React.useEffect(() => {
+        axios.get(baseURL).then((response) => {
+          setDados(response.data);
+        });
+      }, []);
+    
+      if (!dados) return null;
     
     return (
         <div className='container'>
@@ -39,7 +46,7 @@ function ListagemUsuarios() {
                         <th scope='col'>Ações</th>
                     </tr>
                     </thead>
-                    {/* <tbody>
+                     <tbody>
                     {dados.map((dado) => (
                         <tr key={dado.id}>
                         <td>{dado.email}</td>
@@ -49,13 +56,13 @@ function ListagemUsuarios() {
                             { <Stack spacing={1} padding={0} direction='row'>
                             <IconButton
                                 aria-label='edit'
-                                onClick={() => editar(dado.id)}
+                                // onClick={() => editar(dado.id)}
                             >
                                 <EditIcon />
                             </IconButton>
                             <IconButton
                                 aria-label='delete'
-                                onClick={() => excluir(dado.id)}
+                                // onClick={() => excluir(dado.id)}
                             >
                                 <DeleteIcon />
                             </IconButton>
@@ -63,7 +70,7 @@ function ListagemUsuarios() {
                         </td>
                         </tr>
                     ))}
-                    </tbody> */}
+                    </tbody>
                 </table>{' '}
                 </div>
             </div>
