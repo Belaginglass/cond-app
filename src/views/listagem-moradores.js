@@ -10,9 +10,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
 import { BASE_URL } from '../config/axios';
 
-const baseURL = `${BASE_URL}/usuarios`;
+const baseURL = `${BASE_URL}/moradores`;
 
-function ListagemUsuarios() {
+function ListagemMoradores() {
     const [dados, setDados] = React.useState(null);
 
     React.useEffect(() => {
@@ -25,7 +25,7 @@ function ListagemUsuarios() {
     
     return (
         <div className='container'>
-        <Card title='Listagem de Usuários'>
+        <Card title='Listagem de Moradores'>
             <div className='row'>
             <div className='col-lg-12'>
                 <div className='bs-component'>
@@ -39,18 +39,28 @@ function ListagemUsuarios() {
                 <table className='table table-hover'>
                     <thead>
                     <tr>
-                        <th scope='col'>Email</th>
+                    <th scope='col'>Nome</th>
                         <th scope='col'>CPF</th>
+                        <th scope='col'>Condominio</th>
+                        <th scope='col'>Celular Pessoal</th>
+                        <th scope='col'>Celular Comercial</th>
+                        <th scope='col'>Email</th>
                         <th scope='col'>Senha</th>
+                        <th scope='col'>Status de Proprietario</th>
                         <th scope='col'>Ações</th>
                     </tr>
                     </thead>
                     { <tbody>
                     {dados.map((dado) => (
                         <tr key={dado.id}>
+                        <td>{dado.nome}</td>
+                        <td>{dado.CPF}</td>
+                        <td>{dado.idCondominio}</td>
+                        <td>{dado.celularPessoal}</td>
+                        <td>{dado.celularComercial}</td>
                         <td>{dado.email}</td>
-                        <td>{dado.cpf}</td>
                         <td>{dado.senha}</td>
+                        <td>{dado.statusProprietario}</td>
                         <td>
                             { <Stack spacing={1} padding={0} direction='row'>
                             <IconButton
@@ -78,4 +88,4 @@ function ListagemUsuarios() {
         </div>
     );
 }
-export default ListagemUsuarios;
+export default ListagemMoradores;

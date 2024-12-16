@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://my-json-server.typicode.com/Belaginglass/jsonfake'
+export const BASE_URL = 'https://my-json-server.typicode.com/Belaginglass/jsonfake';

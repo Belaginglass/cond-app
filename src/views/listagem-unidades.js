@@ -15,6 +15,13 @@ const baseURL = `${BASE_URL}/unidades`;
 function ListagemUnidades() {
     const [dados, setDados] = React.useState(null);
 
+    React.useEffect(() => {
+        axios.get(baseURL).then((response) => {
+          setDados(response.data);
+        });
+      }, []);
+    
+      if (!dados) return null;
     
     
     return (
@@ -41,25 +48,25 @@ function ListagemUnidades() {
                         <th scope='col'>Ações</th>
                     </tr>
                     </thead>
-                    {/* <tbody>
+                    {<tbody>
                     {dados.map((dado) => (
                         <tr key={dado.id}>
                         <td>{dado.numero}</td>
                         <td>{dado.bloco}</td>
                         <td>{dado.rua}</td>
                         <td>{dado.petFriendly}</td>
-                        <td>{dado.qtdVagas}</td>
+                        <td>{dado.quantidadeVagas}</td>
                         <td>
                             { <Stack spacing={1} padding={0} direction='row'>
                             <IconButton
                                 aria-label='edit'
-                                onClick={() => editar(dado.id)}
+                               // onClick={() => editar(dado.id)}
                             >
                                 <EditIcon />
                             </IconButton>
                             <IconButton
                                 aria-label='delete'
-                                onClick={() => excluir(dado.id)}
+                                //onClick={() => excluir(dado.id)}
                             >
                                 <DeleteIcon />
                             </IconButton>
@@ -67,7 +74,7 @@ function ListagemUnidades() {
                         </td>
                         </tr>
                     ))}
-                    </tbody> */}
+                    </tbody> }
                 </table>{' '}
                 </div>
             </div>

@@ -7,15 +7,23 @@ import { IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
+
 import axios from 'axios';
 import { BASE_URL } from '../config/axios';
 
 const baseURL = `${BASE_URL}/condominios`;
 
-function ListagemCondominio() {
+function ListagemCondominios() {
     const [dados, setDados] = React.useState(null);
 
+    React.useEffect(() => {
+        axios.get(baseURL).then((response) => {
+          setDados(response.data);
+        });
+      }, []);
     
+      if (!dados) return null;
+
     return (
         <div className='container'>
         <Card title='Listagem de Condominio'>
@@ -34,11 +42,15 @@ function ListagemCondominio() {
                     <tr>
                         <th scope='col'>Nome</th>
                         <th scope='col'>Tipo de Condominio</th>
+                        <th scope='col'>quantidadePortarias</th>
+                        <th scope='col'>quantidadeUnidades</th>
+                        <th scope='col'>quantidadeBlocos</th>
                         <th scope='col'>Exige Indentificacao</th>
                         <th scope='col'>Chave de Acesso</th>
+                        <th scope='col'>Ações</th>
                     </tr>
                     </thead>
-                    {/* <tbody>
+                    {<tbody>
                     {dados.map((dado) => (
                         <tr key={dado.id}>
                         <td>{dado.nome}</td>
@@ -52,13 +64,13 @@ function ListagemCondominio() {
                             {<Stack spacing={1} padding={0} direction='row'>
                             <IconButton
                                 aria-label='edit'
-                                onClick={() => editar(dado.id)}
+                                //onClick={() => editar(dado.id)}
                             >
                                 <EditIcon />
                             </IconButton>
                             <IconButton
                                 aria-label='delete'
-                                onClick={() => excluir(dado.id)}
+                                //onClick={() => excluir(dado.id)}
                             >
                                 <DeleteIcon />
                             </IconButton>
@@ -66,7 +78,7 @@ function ListagemCondominio() {
                         </td>
                         </tr>
                     ))}
-                    </tbody> */}
+                    </tbody> }
                 </table>{' '}
                 </div>
             </div>
@@ -75,4 +87,4 @@ function ListagemCondominio() {
         </div>
     );
 }
-export default ListagemCondominio;
+export default ListagemCondominios;

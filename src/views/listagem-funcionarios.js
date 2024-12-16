@@ -12,10 +12,17 @@ import { BASE_URL } from '../config/axios';
 
 const baseURL = `${BASE_URL}/funcionarios`;
 
-function ListagemUsuarios() {
+function ListagemFuncionarios() {
     const [dados, setDados] = React.useState(null);
 
-   
+    React.useEffect(() => {
+        axios.get(baseURL).then((response) => {
+          setDados(response.data);
+        });
+      }, []);
+    
+      if (!dados) return null;
+    
     
     return (
         <div className='container'>
@@ -33,41 +40,45 @@ function ListagemUsuarios() {
                 <table className='table table-hover'>
                     <thead>
                     <tr>
-                        <th scope='col'>Email</th>
+                        <th scope='col'>Nome</th>
                         <th scope='col'>CPF</th>
+                        <th scope='col'>Empresa</th>
+                        <th scope='col'>Celular Pessoal</th>
+                        <th scope='col'>Celular Comercial</th>
+                        <th scope='col'>Email</th>
                         <th scope='col'>Senha</th>
                         <th scope='col'>Ações</th>
                     </tr>
                     </thead>
-                    {/* <tbody>
+                    <tbody>
                     {dados.map((dado) => (
                         <tr key={dado.id}>
                         <td>{dado.nome}</td>
-                        <td>{dado.cpf}</td>
+                        <td>{dado.CPF}</td>
                         <td>{dado.empresa}</td>
                         <td>{dado.celularPessoal}</td>
                         <td>{dado.celularComercial}</td>
                         <td>{dado.email}</td>
                         <td>{dado.senha}</td>
                         <td>
-                            {/<Stack spacing={1} padding={0} direction='row'>
+                            { <Stack spacing={1} padding={0} direction='row'>
                             <IconButton
                                 aria-label='edit'
-                                onClick={() => editar(dado.id)}
+                                //onClick={() => editar(dado.id)}
                             >
                                 <EditIcon />
                             </IconButton>
                             <IconButton
                                 aria-label='delete'
-                                onClick={() => excluir(dado.id)}
+                               // onClick={() => excluir(dado.id)}
                             >
                                 <DeleteIcon />
                             </IconButton>
-                            </Stack>}
+                            </Stack> }
                         </td>
                         </tr>
                     ))}
-                    </tbody> */}
+                    </tbody>
                 </table>{' '}
                 </div>
             </div>
@@ -76,4 +87,4 @@ function ListagemUsuarios() {
         </div>
     );
 }
-export default ListagemUsuarios;
+export default ListagemFuncionarios;
