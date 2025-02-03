@@ -53,7 +53,6 @@ function ListagemPrestadoresServico() {
               <table className="table table-hover">
                 <thead>
                   <tr>
-                  <th scope="col">Id</th>
                     <th scope="col">Nome</th>
                     <th scope="col">CPF</th>
                     <th scope="col">Empresa</th>
@@ -61,13 +60,13 @@ function ListagemPrestadoresServico() {
                     <th scope="col">Celular Pessoal</th>
                     <th scope="col">E-mail</th>
                     <th scope="col">Destino</th>
+                    <th scope="col">Ações</th>
                   </tr>
                 </thead>
                 {
                   <tbody>
                     {dados.map((dado) => (
                       <tr key={dado.id}>
-                        <td>{dado.id}</td>
                         <td>{dado.nome}</td>
                         <td>{dado.cpf}</td>
                         <td>{dado.empresa}</td>

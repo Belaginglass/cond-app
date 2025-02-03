@@ -58,6 +58,7 @@ function ListagemVeiculos() {
                     <th scope="col">Cor</th>
                     <th scope="col">Tipo</th>
                     <th scope="col">Unidade</th>
+                    <th scope="col">Ações</th>
                   </tr>
                 </thead>
                 {

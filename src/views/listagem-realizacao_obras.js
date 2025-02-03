@@ -53,12 +53,12 @@ function ListagemRealizacaoObras() {
               <table className="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">Id</th>
                     <th scope="col">Data de início</th>
                     <th scope="col">Data de término</th>
                     <th scope="col">Empresa prestadora</th>
                     <th scope="col">Descrição</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Ações</th>
                   </tr>
                 </thead>
                 {

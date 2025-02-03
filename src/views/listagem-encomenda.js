@@ -56,6 +56,7 @@ function ListagemEncomenda() {
                     <th scope="col">Destinatário</th>
                     <th scope="col">Data e hora da entrega</th>
                     <th scope="col">Recebedor</th>
+                    <th scope="col">Ações</th>
                   </tr>
                 </thead>
                 {

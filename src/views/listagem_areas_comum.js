@@ -57,7 +57,7 @@ function ListagemAreasComum() {
                     <th scope="col">Descrição</th>
                     <th scope="col">capacidadeMax</th>
                     <th scope="col">horarioUtilizacao</th>
-                    <th scope="col">Restrições</th>
+                    <th scope="col">Ações</th>
                   </tr>
                 </thead>
                 {
