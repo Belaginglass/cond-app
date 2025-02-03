@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Card from '../components/card';
+import { useNavigate } from "react-router-dom";
 
 import Stack from '@mui/material/Stack';
 import { IconButton } from '@mui/material';
@@ -13,6 +14,17 @@ import { BASE_URL } from '../config/axios';
 const baseURL = `${BASE_URL}/moradores`;
 
 function ListagemMoradores() {
+
+    const navigate = useNavigate();
+
+    const cadastrar = () => {
+        navigate(`/cadastro-morador`);
+    };
+
+    const editar = (id) => {
+        navigate(`/cadastro-morador/${id}`);
+    };
+
     const [dados, setDados] = React.useState(null);
 
     React.useEffect(() => {
@@ -32,9 +44,9 @@ function ListagemMoradores() {
                 { <button
                     type='button'
                     className='btn btn-warning'
-                    // onClick={() => cadastrar()}
+                     onClick={() => cadastrar()}
                 >
-                    Novo Usuário
+                    Novo Morador
                 </button> }
                 <table className='table table-hover'>
                     <thead>
@@ -63,7 +75,7 @@ function ListagemMoradores() {
                             { <Stack spacing={1} padding={0} direction='row'>
                             <IconButton
                                 aria-label='edit'
-                                //onClick={() => editar(dado.id)}
+                                onClick={() => editar(dado.id)}
                             >
                                 <EditIcon />
                             </IconButton>
