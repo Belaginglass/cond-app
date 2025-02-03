@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import Stack from "@mui/material/Stack";
+import Stack from '@mui/material/Stack';
 
-import Card from "../components/card";
-import FormGroup from "../components/form-group";
+import Card from '../components/card';
+import FormGroup from '../components/form-group';
 
- import { mensagemSucesso, mensagemErro } from "../components/toastr";
+import { mensagemSucesso, mensagemErro } from '../components/toastr';
 
-// import "../custom.css";
+// import '../custom.css';
 
-import axios from "axios";
-import { BASE_URL } from "../config/axios";
+import axios from 'axios';
+import { BASE_URL } from '../config/axios';
+
 
 function CadastroUsuario() {
   const { idParam } = useParams();
@@ -20,19 +21,19 @@ function CadastroUsuario() {
 
   const baseURL = `${BASE_URL}/usuarios`;
 
-  const [id, setId] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [id, setId] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
 
   const [dados, setDados] = React.useState([]);
 
   function inicializar() {
     if (idParam == null) {
-      setId("");
-      setCpf("");
-      setEmail("");
-      setSenha("");
+      setId('');
+      setCpf('');
+      setEmail('');
+      setSenha('');
     } else {
       setId(dados.id);
       setCpf(dados.cpf);
@@ -72,29 +73,23 @@ function CadastroUsuario() {
   }
 
   async function buscar() {
-    await axios.get(`${baseURL}/${idParam}`).then((response) => {
-      setDados(response.data);
-    });
-    setId(dados.id);
-    setCpf(dados.cpf);
-    setEmail(dados.email);
-    setSenha(dados.senha);
+    if(idParam != null){
+      await axios.get(`${baseURL}/${idParam}`).then((response) => {
+        setDados(response.data);
+      });
+      setId(dados.id);
+      setCpf(dados.cpf);
+      setEmail(dados.email);
+      setSenha(dados.senha);
+    }
   }
 
-  const [dadosUsuarios, setDadosUsuarios] = React.useState(null);
 
   useEffect(() => {
-    axios.get(`${BASE_URL}/usuarios`).then((response) => {
-      setDadosUsuarios(response.data);
-    });
-  }, []);
-
-  useEffect(() => {
-    buscar(); // eslint-disable-next-line
+    buscar(); 
   }, [id]);
 
   if (!dados) return null;
-  if (!dadosUsuarios) return null;
 
   return (
     <div className="container">

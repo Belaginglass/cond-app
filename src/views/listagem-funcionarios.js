@@ -46,7 +46,6 @@ function ListagemFuncionarios() {
                         <th scope='col'>Celular Pessoal</th>
                         <th scope='col'>Celular Comercial</th>
                         <th scope='col'>Email</th>
-                        <th scope='col'>Senha</th>
                         <th scope='col'>Ações</th>
                     </tr>
                     </thead>
@@ -59,7 +58,6 @@ function ListagemFuncionarios() {
                         <td>{dado.celularPessoal}</td>
                         <td>{dado.celularComercial}</td>
                         <td>{dado.email}</td>
-                        <td>{dado.senha}</td>
                         <td>
                             { <Stack spacing={1} padding={0} direction='row'>
                             <IconButton

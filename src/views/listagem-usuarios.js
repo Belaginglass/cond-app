@@ -55,7 +55,6 @@ function ListagemUsuarios() {
                   <tr>
                     <th scope="col">Email</th>
                     <th scope="col">CPF</th>
-                    <th scope="col">Senha</th>
                     <th scope="col">Ações</th>
                   </tr>
                 </thead>
@@ -65,7 +64,6 @@ function ListagemUsuarios() {
                       <tr key={dado.id}>
                         <td>{dado.email}</td>
                         <td>{dado.cpf}</td>
-                        <td>{dado.senha}</td>
                         <td>
                           {
                             <Stack spacing={1} padding={0} direction="row">

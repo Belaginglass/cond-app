@@ -45,7 +45,6 @@ function ListagemMoradores() {
                         <th scope='col'>Celular Pessoal</th>
                         <th scope='col'>Celular Comercial</th>
                         <th scope='col'>Email</th>
-                        <th scope='col'>Senha</th>
                         <th scope='col'>Status de Proprietario</th>
                         <th scope='col'>Ações</th>
                     </tr>
@@ -59,7 +58,6 @@ function ListagemMoradores() {
                         <td>{dado.celularPessoal}</td>
                         <td>{dado.celularComercial}</td>
                         <td>{dado.email}</td>
-                        <td>{dado.senha}</td>
                         <td>{dado.statusProprietario}</td>
                         <td>
                             { <Stack spacing={1} padding={0} direction='row'>
