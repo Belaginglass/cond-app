@@ -55,11 +55,11 @@ function ListagemCondominios() {
                                     <tr>
                                         <th scope='col'>Nome</th>
                                         <th scope='col'>Tipo de Condominio</th>
-                                        <th scope='col'>quantidadePortarias</th>
-                                        <th scope='col'>quantidadeUnidades</th>
-                                        <th scope='col'>quantidadeBlocos</th>
+                                        <th scope='col'>Quantidade de Portarias</th>
+                                        <th scope='col'>Quantidade de Unidades</th>
+                                        <th scope='col'>Quantidade de Blocos</th>
                                         <th scope='col'>Exige Indentificacao</th>
-                                        <th scope='col'>Chave de Acesso</th>
+                                        {/* <th scope='col'>Chave de Acesso</th> */}
                                         <th scope='col'>Ações</th>
                                     </tr>
                                 </thead>
@@ -72,7 +72,7 @@ function ListagemCondominios() {
                                             <td>{dado.quantidadeUnidades}</td>
                                             <td>{dado.quantidadeBlocos}</td>
                                             <td>{dado.exigeIndentificacao}</td>
-                                            <td>{dado.chaveAcesso}</td>
+                                            {/* <td>{dado.chaveAcesso}</td> */}
                                             <td>
                                                 {<Stack spacing={1} padding={0} direction='row'>
                                                     <IconButton

@@ -133,7 +133,7 @@ function CadastroCondominio() {
                       onChange={(e) => setTipoCondominio(e.target.value)}
                     />
                   </FormGroup>
-                  <FormGroup label="QuantidadePortarias: *" htmlFor="inputQuantidadePortarias">
+                  <FormGroup label="Quantidade de Portarias: *" htmlFor="inputQuantidadePortarias">
                     <input
                       type="text"
                       id="inputQuantidadePortarias"
@@ -143,7 +143,7 @@ function CadastroCondominio() {
                       onChange={(e) => setQuantidadePortarias(e.target.value)}
                     />
                   </FormGroup>
-                  <FormGroup label="QuantidadeUnidades: *" htmlFor="inputQuantidadeUnidades">
+                  <FormGroup label="Quantidade de Unidades: *" htmlFor="inputQuantidadeUnidades">
                     <input
                       type="text"
                       id="inputQuantidadeUnidades"
@@ -153,7 +153,7 @@ function CadastroCondominio() {
                       onChange={(e) => setQuantidadeUnidades(e.target.value)}
                     />
                   </FormGroup>
-                  <FormGroup label="QuantidadeBlocos: *" htmlFor="inputQuantidadeBlocos">
+                  <FormGroup label="Quantidade de Blocos: *" htmlFor="inputQuantidadeBlocos">
                     <input
                       type="text"
                       id="inputQuantidadeBlocos"
@@ -163,7 +163,7 @@ function CadastroCondominio() {
                       onChange={(e) => setQuantidadeBlocos(e.target.value)}
                     />
                   </FormGroup>
-                  <FormGroup label="ExigeIndentificacao: *" htmlFor="inputExigeIndentificacao">
+                  <FormGroup label="Exige Indentificação: *" htmlFor="inputExigeIndentificacao">
                     <input
                       type="text"
                       id="inputExigeIndentificacao"
@@ -173,7 +173,7 @@ function CadastroCondominio() {
                       onChange={(e) => setExigeIndentificacao(e.target.value)}
                     />
                   </FormGroup>
-                  <FormGroup label="ChaveAcesso: *" htmlFor="inputChaveAcesso">
+                  <FormGroup label="Chave de Acesso: *" htmlFor="inputChaveAcesso">
                     <input
                       type="text"
                       id="inputChaveAcesso"
