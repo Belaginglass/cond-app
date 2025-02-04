@@ -19,10 +19,12 @@ function CadastroVeiculos() {
   const baseURL = `${BASE_URL2}/listagem-veiculos`;
 
   const [id, setId] = useState("");
+  const [morador, setMorador] = useState("");
   const [placa, setPlaca] = useState("");
   const [marcaModelo, setMarcaModelo] = useState("");
   const [cor, setCor] = useState("");
   const [tipo, setTipo] = useState("");
+  const [condominio, setCondominio] = useState("");
   const [unidade, setUnidade] = useState("");
 
   const [dados, setDados] = useState([]);
@@ -30,17 +32,21 @@ function CadastroVeiculos() {
   function inicializar() {
     if (idParam == null) {
       setId("");
+      setMorador("");
       setPlaca("");
       setMarcaModelo("");
       setCor("");
       setTipo("");
+      setCondominio("");
       setUnidade("");
     } else {
       setId(dados.id);
+      setMorador(dados.morador);
       setPlaca(dados.placa);
       setMarcaModelo(dados.marca_modelo);
       setCor(dados.cor);
       setTipo(dados.tipo);
+      setCondominio(dados.condominio);
       setUnidade(dados.unidade);
     }
   }
@@ -48,10 +54,12 @@ function CadastroVeiculos() {
   async function salvar() {
     let data = {
       id,
+      morador,
       placa,
       marca_modelo: marcaModelo,
       cor,
       tipo,
+      condominio,
       unidade,
     };
     data = JSON.stringify(data);
@@ -88,10 +96,12 @@ function CadastroVeiculos() {
         setDados(response.data);
       });
       setId(dados.id);
+      setMorador(dados.morador);
       setPlaca(dados.placa);
       setMarcaModelo(dados.marca_modelo);
       setCor(dados.cor);
       setTipo(dados.tipo);
+      setCondominio(dados.condominio);
       setUnidade(dados.unidade);
     }
   }
@@ -108,6 +118,16 @@ function CadastroVeiculos() {
         <div className="row">
           <div className="col-lg-12">
             <div className="bs-component">
+              <FormGroup label="Morador: *" htmlFor="inputMorador">
+                <input
+                  type="select"
+                  id="inputMorador"
+                  value={morador}
+                  className="form-control"
+                  name="morador"
+                  onChange={(e) => setMorador(e.target.value)}
+                />
+              </FormGroup>
               <FormGroup label="Placa: *" htmlFor="inputPlaca">
                 <input
                   type="text"
@@ -140,7 +160,7 @@ function CadastroVeiculos() {
               </FormGroup>
               <FormGroup label="Tipo: *" htmlFor="inputTipo">
                 <input
-                  type="text"
+                  type="select"
                   id="inputTipo"
                   value={tipo}
                   className="form-control"
@@ -148,9 +168,19 @@ function CadastroVeiculos() {
                   onChange={(e) => setTipo(e.target.value)}
                 />
               </FormGroup>
+              <FormGroup label="Condomínio: *" htmlFor="inputMorador">
+                <input
+                  type="select"
+                  id="inputCondominio"
+                  value={morador}
+                  className="form-control"
+                  name="morador"
+                  onChange={(e) => setMorador(e.target.value)}
+                />
+              </FormGroup>
               <FormGroup label="Unidade: *" htmlFor="inputUnidade">
                 <input
-                  type="text"
+                  type="select"
                   id="inputUnidade"
                   value={unidade}
                   className="form-control"

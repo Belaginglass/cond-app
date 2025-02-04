@@ -20,7 +20,8 @@ function CadastroEncomenda() {
 
     const [id, setId] = useState("");
     const [destinatario, setDestinatario] = useState("");
-    const [data_hora, setDataHora] = useState("");
+    const [data, setData] = useState("");
+    const [hora, setHora] = useState("");
     const [recebedor, setRecebedor] = useState("");
 
     const [dados, setDados] = useState([]);
@@ -29,12 +30,14 @@ function CadastroEncomenda() {
         if (idParam == null) {
             setId("");
             setDestinatario("");
-            setDataHora("");
+            setData("");
+            setHora("");
             setRecebedor("");
         } else {
             setId(dados.id);
             setDestinatario(dados.destinatario);
-            setDataHora(dados.data_hora);
+            setData(dados.data);
+            setHora(dados.hora);
             setRecebedor(dados.recebedor);
         }
     }
@@ -43,7 +46,8 @@ function CadastroEncomenda() {
         let data = {
             id,
             destinatario,
-            data_hora,
+            data,
+            hora,
             recebedor,
         };
         data = JSON.stringify(data);
@@ -81,7 +85,8 @@ function CadastroEncomenda() {
             });
             setId(dados.id);
             setDestinatario(dados.destinatario);
-            setDataHora(dados.data_hora);
+            setData(dados.data);
+            setHora(dados.hora);
             setRecebedor(dados.recebedor);
         }
     }
@@ -108,14 +113,24 @@ function CadastroEncomenda() {
                                     onChange={(e) => setDestinatario(e.target.value)}
                                 />
                             </FormGroup>
-                            <FormGroup label="Data e Hora: *" htmlFor="inputDataHora">
+                            <FormGroup label="Data da entrega: *" htmlFor="inputData">
                                 <input
-                                    type="datetime-local"
-                                    id="inputDataHora"
-                                    value={data_hora}
+                                    type="date"
+                                    id="inputData"
+                                    value={data}
                                     className="form-control"
-                                    name="data_hora"
-                                    onChange={(e) => setDataHora(e.target.value)}
+                                    name="data"
+                                    onChange={(e) => setData(e.target.value)}
+                                />
+                            </FormGroup>
+                            <FormGroup label="Hora da entrega: *" htmlFor="inputHora">
+                                <input
+                                    type="time"
+                                    id="inputHora"
+                                    value={hora}
+                                    className="form-control"
+                                    name="Hora"
+                                    onChange={(e) => setHora(e.target.value)}
                                 />
                             </FormGroup>
                             <FormGroup label="Recebedor: *" htmlFor="inputRecebedor">

@@ -188,7 +188,7 @@ function CadastroPrestadoresServico() {
               </FormGroup>
               <FormGroup label="Destino: *" htmlFor="inputDestino">
                 <input
-                  type="text"
+                  type="select"
                   id="inputDestino"
                   value={destino}
                   className="form-control"

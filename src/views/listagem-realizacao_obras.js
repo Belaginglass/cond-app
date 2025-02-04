@@ -53,6 +53,7 @@ function ListagemRealizacaoObras() {
               <table className="table table-hover">
                 <thead>
                   <tr>
+                    <th scope="col">Condomínio</th>
                     <th scope="col">Data de início</th>
                     <th scope="col">Data de término</th>
                     <th scope="col">Empresa prestadora</th>
@@ -65,6 +66,7 @@ function ListagemRealizacaoObras() {
                   <tbody>
                     {dados.map((dado) => (
                       <tr key={dado.id}>
+                        <td>{dado.condominio}</td>
                         <td>{dado.data_inicio}</td>
                         <td>{dado.data_termino}</td>
                         <td>{dado.empresa_prestadora}</td>

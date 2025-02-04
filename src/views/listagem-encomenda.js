@@ -54,7 +54,8 @@ function ListagemEncomenda() {
                 <thead>
                   <tr>
                     <th scope="col">Destinatário</th>
-                    <th scope="col">Data e hora da entrega</th>
+                    <th scope="col">Data da entrega</th>
+                    <th scope="col">Hora da entrega</th>
                     <th scope="col">Recebedor</th>
                     <th scope="col">Ações</th>
                   </tr>
@@ -64,7 +65,8 @@ function ListagemEncomenda() {
                     {dados.map((dado) => (
                       <tr key={dado.id}>
                         <td>{dado.destinatario}</td>
-                        <td>{dado.data_hora}</td>
+                        <td>{dado.data}</td>
+                        <td>{dado.hora}</td>
                         <td>{dado.recebedor}</td>
                         <td>
                           {
