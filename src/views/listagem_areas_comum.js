@@ -78,11 +78,11 @@ function ListagemAreasComum() {
                   <tr>
                     <th scope="col">Nome</th>
                     <th scope="col">Descrição</th>
-                    <th scope="col">Capacidade Máxima de Pessoas: </th>
+                    <th scope="col">Capacidade Máxima de Pessoas</th>
                     <th scope="col">Horário Ínicio</th>
-                    <th scope="col">Horário Fim: </th>
-                    <th scope="col">Condomínio: </th>
-                    <th scope="col">Unidade: </th>
+                    <th scope="col">Horário Fim</th>
+                    <th scope="col">Condomínio</th>
+                    <th scope="col">Unidade</th>
                     <th scope="col">Ações</th>
                   </tr>
                 </thead>
@@ -93,8 +93,8 @@ function ListagemAreasComum() {
                         <td>{dado.nome}</td>
                         <td>{dado.descricao}</td>
                         <td>{dado.capacidade_max}</td>
-                        <td>{dado.horario_inicio}</td>
-                        <td>{dado.horario_fim}</td>
+                        <td>{dado.horario_utilizacao_inicio}</td>
+                        <td>{dado.horario_utilizacao_fim}</td>
                         <td>{dado.condominio}</td>
                         <td>
                           {

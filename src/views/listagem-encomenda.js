@@ -93,8 +93,8 @@ function ListagemEncomenda() {
                         <td>{dado.data}</td>
                         <td>{dado.hora}</td>
                         <td>{dado.recebedor}</td>
-                        <td>{dado.idCondominio}</td>
-                        <td>{dado.idUnidade}</td>
+                        <td>{dado.condominio}</td>
+                        <td>{dado.unidade}</td>
                         <td>
                           {
                             <Stack spacing={1} padding={0} direction="row">
