@@ -59,7 +59,8 @@ function ListagemPrestadoresServico() {
                     <th scope="col">Celular Comercial</th>
                     <th scope="col">Celular Pessoal</th>
                     <th scope="col">E-mail</th>
-                    <th scope="col">Destino</th>
+                    <th scope="col">Condominio</th>
+                    <th scope="col">Unidade</th>
                     <th scope="col">Ações</th>
                   </tr>
                 </thead>
@@ -73,7 +74,8 @@ function ListagemPrestadoresServico() {
                         <td>{dado.celular_comercial}</td>
                         <td>{dado.celular_pessoal}</td>
                         <td>{dado.email}</td>
-                        <td>{dado.destino}</td>
+                        <td>{dado.condominio}</td>
+                        <td>{dado.unidade}</td>
                         <td>
                           {
                             <Stack spacing={1} padding={0} direction="row">

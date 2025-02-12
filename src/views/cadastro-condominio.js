@@ -23,11 +23,11 @@ function CadastroCondominio() {
 
     const [id, setId] = useState('');
     const [nome, setNome] = useState('');
-    const [tipoCondominio, setTipoCondominio] = useState(false);
+    const [tipoCondominio, setTipoCondominio] = useState('');
     const [quantidadePortarias, setQuantidadePortarias] = useState(0);
     const [quantidadeUnidades, setQuantidadeUnidades] = useState(0);
     const [quantidadeBlocos, setQuantidadeBlocos] = useState(0);
-    const [exigeIndentificacao, setExigeIndentificacao] = useState(false);
+    const [exigeIndentificacao, setExigeIndentificacao] = useState('Não');
     const [chaveAcesso, setChaveAcesso] = useState(0);
     
     const [dados, setDados] = React.useState([]);
@@ -38,10 +38,10 @@ function CadastroCondominio() {
       setId('');
       setNome('');
       setTipoCondominio('');
-      setQuantidadePortarias('');
-      setQuantidadeUnidades('');
-      setQuantidadeBlocos('');
-      setExigeIndentificacao('');
+      setQuantidadePortarias(0);
+      setQuantidadeUnidades(0);
+      setQuantidadeBlocos(0);
+      setExigeIndentificacao('Não');
       setChaveAcesso('');
     } else {
         setId(dados.id);

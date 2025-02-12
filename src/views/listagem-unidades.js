@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Card from '../components/card';
+import { useNavigate } from "react-router-dom";
 
 import Stack from '@mui/material/Stack';
 import { IconButton } from '@mui/material';
@@ -13,6 +14,17 @@ import { BASE_URL } from '../config/axios';
 const baseURL = `${BASE_URL}/unidades`;
 
 function ListagemUnidades() {
+
+    const navigate = useNavigate();
+
+    const cadastrar = () => {
+        navigate(`/cadastro-unidade`);
+    };
+
+    const editar = (id) => {
+        navigate(`/cadastro-unidade/${id}`);
+    };
+    
     const [dados, setDados] = React.useState(null);
 
     React.useEffect(() => {
@@ -33,16 +45,17 @@ function ListagemUnidades() {
                 { <button
                     type='button'
                     class='btn btn-warning'
-                  //  onClick={() => cadastrar()}
+                    onClick={() => cadastrar()}
                 >
                     Nova Unidade
                 </button> }
                 <table className='table table-hover'>
                     <thead>
                     <tr>
-                        <th scope='col'>Número</th>
+                        <th scope='col'>Condominio</th>
                         <th scope='col'>Bloco</th>
                         <th scope='col'>Rua</th>
+                        <th scope='col'>Número</th>
                         <th scope='col'>Pet Friendly</th>
                         <th scope='col'>Quantidade de Vagas</th>
                         <th scope='col'>Ações</th>
@@ -51,16 +64,17 @@ function ListagemUnidades() {
                     {<tbody>
                     {dados.map((dado) => (
                         <tr key={dado.id}>
-                        <td>{dado.numero}</td>
+                        <td>{dado.idCondominio}</td>
                         <td>{dado.bloco}</td>
                         <td>{dado.rua}</td>
+                        <td>{dado.numero}</td>
                         <td>{dado.petFriendly}</td>
                         <td>{dado.quantidadeVagas}</td>
                         <td>
                             { <Stack spacing={1} padding={0} direction='row'>
                             <IconButton
                                 aria-label='edit'
-                               // onClick={() => editar(dado.id)}
+                                onClick={() => editar(dado.id)}
                             >
                                 <EditIcon />
                             </IconButton>

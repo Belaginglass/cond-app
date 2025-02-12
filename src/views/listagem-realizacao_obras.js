@@ -54,6 +54,7 @@ function ListagemRealizacaoObras() {
                 <thead>
                   <tr>
                     <th scope="col">Condomínio</th>
+                    <th scope="col">Unidade</th>
                     <th scope="col">Data de início</th>
                     <th scope="col">Data de término</th>
                     <th scope="col">Empresa prestadora</th>
@@ -67,6 +68,7 @@ function ListagemRealizacaoObras() {
                     {dados.map((dado) => (
                       <tr key={dado.id}>
                         <td>{dado.condominio}</td>
+                        <td>{dado.unidade}</td>
                         <td>{dado.data_inicio}</td>
                         <td>{dado.data_termino}</td>
                         <td>{dado.empresa_prestadora}</td>

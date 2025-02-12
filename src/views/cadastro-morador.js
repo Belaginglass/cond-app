@@ -24,12 +24,13 @@ function CadastroMorador(){
 
     const [id, setId] = useState('');
     const [nome, setNome] = useState('');
-    const [CPF, setCPF] = useState(0);
-    const [idCondominio, setIdCondominio] = useState(0);
+    const [CPF, setCPF] = useState('');
+    const [idCondominio, setIdCondominio] = useState('');
+    const [idUnidade, setIdUnidade] = useState('');
     const [celularPessoal, setCelularPessoal] = useState('');
     const [celularComercial, setCelularComercial] = useState('');
     const [email, setEmail] = useState('');
-    const [statusProprietario, setStatusProprietario] = useState(false);
+    const [statusProprietario, setStatusProprietario] = useState('Não');
 
     const [dados, setDados] = React.useState([]);
 
@@ -37,17 +38,19 @@ function CadastroMorador(){
         if (idParam == null) {
           setId('');
           setNome('');
-          setCPF(0);
-          setIdCondominio(0);
+          setCPF('');
+          setIdCondominio('');
+          setIdUnidade('');
           setCelularPessoal('');
           setCelularComercial('');
           setEmail('');
-          setStatusProprietario(false);
+          setStatusProprietario('Não');
         } else {
           setId(dados.id);
           setNome(dados.nome);
           setCPF(dados.CPF);
           setIdCondominio(dados.idCondominio);
+          setIdUnidade(dados.idUnidade);
           setCelularPessoal(dados.celularPessoal);
           setCelularComercial(dados.celularComercial);
           setEmail(dados.email);
@@ -56,7 +59,7 @@ function CadastroMorador(){
     }
     
     async function salvar() {
-        let data = { id, nome, CPF, idCondominio, celularPessoal, celularComercial, email, statusProprietario};
+        let data = { id, nome, CPF, idCondominio, idUnidade, celularPessoal, celularComercial, email, statusProprietario};
         data = JSON.stringify(data);
         if (idParam == null) {
           await axios
@@ -94,6 +97,7 @@ function CadastroMorador(){
             setNome(dados.nome);
             setCPF(dados.CPF);
             setIdCondominio(dados.idCondominio);
+            setIdUnidade(dados.idUnidade);
             setCelularPessoal(dados.celularPessoal);
             setCelularComercial(dados.celularComercial);
             setEmail(dados.email);
@@ -103,10 +107,17 @@ function CadastroMorador(){
 
     
     const [dadosCondominios, setDadosCondominios] = React.useState(null);
+    const [dadosUnidades, setDadosUnidades] = React.useState(null);
     
     useEffect(() => {
         axios.get(`${BASE_URL}/condominios`).then((response) => {
           setDadosCondominios(response.data);
+        });
+      }, []);
+
+      useEffect(() => {
+        axios.get(`${BASE_URL}/unidades`).then((response) => {
+          setDadosUnidades(response.data);
         });
       }, []);
 
@@ -116,6 +127,7 @@ function CadastroMorador(){
       
     if (!dados) return null;
     if(!dadosCondominios) return null;
+    if(!dadosUnidades) return null;
 
     return(
     <div className='container'>
@@ -161,6 +173,24 @@ function CadastroMorador(){
                     ))}
                 </select>
                 </FormGroup>
+                <FormGroup label='Unidade:' htmlFor='selectUnidade'>
+                <select
+                    className='form-select'
+                    id='selectUnidade'
+                    name='idUnidade'
+                    value={idUnidade}
+                    onChange={(e) => setIdUnidade(e.target.value)}
+                >
+                    <option key='0' value='0'>
+                    {' '}
+                    </option>
+                    {dadosUnidades.map((dado) => (
+                    <option key={dado.id} value={dado.id}>
+                        {dado.numero}
+                    </option>
+                    ))}
+                </select>
+                </FormGroup>
                 <FormGroup label="Celular Pessoal: *" htmlFor="inputCelularPessoal">
                     <input
                         type="text"
@@ -183,7 +213,7 @@ function CadastroMorador(){
                 </FormGroup>
                 <FormGroup label="Email: *" htmlFor="inputEmail">
                     <input
-                      type="text"
+                      type="email"
                       id="inputEmail"
                       value={email}
                       className="form-control"

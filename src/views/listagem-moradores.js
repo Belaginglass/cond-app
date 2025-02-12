@@ -54,6 +54,7 @@ function ListagemMoradores() {
                     <th scope='col'>Nome</th>
                         <th scope='col'>CPF</th>
                         <th scope='col'>Condominio</th>
+                        <th scope='col'>Unidade</th>
                         <th scope='col'>Celular Pessoal</th>
                         <th scope='col'>Celular Comercial</th>
                         <th scope='col'>Email</th>
@@ -67,6 +68,7 @@ function ListagemMoradores() {
                         <td>{dado.nome}</td>
                         <td>{dado.CPF}</td>
                         <td>{dado.idCondominio}</td>
+                        <td>{dado.idUnidade}</td>
                         <td>{dado.celularPessoal}</td>
                         <td>{dado.celularComercial}</td>
                         <td>{dado.email}</td>

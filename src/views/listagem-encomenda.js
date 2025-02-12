@@ -57,6 +57,8 @@ function ListagemEncomenda() {
                     <th scope="col">Data da entrega</th>
                     <th scope="col">Hora da entrega</th>
                     <th scope="col">Recebedor</th>
+                    <th scope='col'>Condominio</th>
+                    <th scope='col'>Unidade</th>
                     <th scope="col">Ações</th>
                   </tr>
                 </thead>
@@ -68,6 +70,8 @@ function ListagemEncomenda() {
                         <td>{dado.data}</td>
                         <td>{dado.hora}</td>
                         <td>{dado.recebedor}</td>
+                        <td>{dado.idCondominio}</td>
+                        <td>{dado.idUnidade}</td>
                         <td>
                           {
                             <Stack spacing={1} padding={0} direction="row">

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Card from '../components/card';
+import { useNavigate } from "react-router-dom";
 
 import Stack from '@mui/material/Stack';
 import { IconButton } from '@mui/material';
@@ -13,6 +14,17 @@ import { BASE_URL } from '../config/axios';
 const baseURL = `${BASE_URL}/funcionarios`;
 
 function ListagemFuncionarios() {
+
+    const navigate = useNavigate();
+
+    const cadastrar = () => {
+        navigate(`/cadastro-funcionario`);
+    };
+
+    const editar = (id) => {
+        navigate(`/cadastro-funcionario/${id}`);
+    };
+
     const [dados, setDados] = React.useState(null);
 
     React.useEffect(() => {
@@ -33,7 +45,7 @@ function ListagemFuncionarios() {
                 { <button
                     type='button'
                     class='btn btn-warning'
-                    // onClick={() => cadastrar()}
+                     onClick={() => cadastrar()}
                 >
                     Novo Funcionário
                 </button>}
@@ -42,6 +54,7 @@ function ListagemFuncionarios() {
                     <tr>
                         <th scope='col'>Nome</th>
                         <th scope='col'>CPF</th>
+                        <th scope='col'>Condominio</th>
                         <th scope='col'>Empresa</th>
                         <th scope='col'>Celular Pessoal</th>
                         <th scope='col'>Celular Comercial</th>
@@ -54,6 +67,7 @@ function ListagemFuncionarios() {
                         <tr key={dado.id}>
                         <td>{dado.nome}</td>
                         <td>{dado.CPF}</td>
+                        <td>{dado.idCondominio}</td>
                         <td>{dado.empresa}</td>
                         <td>{dado.celularPessoal}</td>
                         <td>{dado.celularComercial}</td>
@@ -62,7 +76,7 @@ function ListagemFuncionarios() {
                             { <Stack spacing={1} padding={0} direction='row'>
                             <IconButton
                                 aria-label='edit'
-                                //onClick={() => editar(dado.id)}
+                                onClick={() => editar(dado.id)}
                             >
                                 <EditIcon />
                             </IconButton>
