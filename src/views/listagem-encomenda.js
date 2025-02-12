@@ -1,6 +1,8 @@
 import React from "react";
 
 import Card from "../components/card";
+import { mensagemSucesso, mensagemErro } from '../components/toastr';
+
 
 import { useNavigate } from "react-router-dom";
 
@@ -24,6 +26,27 @@ function ListagemEncomenda() {
   const editar = (id) => {
     navigate(`/cadastro-encomenda/${id}`);
   };
+
+  async function excluir(id) {
+    let data = JSON.stringify({ id });
+    let url = `${baseURL}/${id}`;
+    console.log(url);
+    await axios
+      .delete(url, data, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .then(function (response) {
+        mensagemSucesso(`Encomenda excluída com sucesso!`);
+        setDados(
+          dados.filter((dado) => {
+            return dado.id !== id;
+          })
+        );
+      })
+      .catch(function (error) {
+        mensagemErro(`Erro ao excluir Encomenda`);
+      });
+  }
 
   const [dados, setDados] = React.useState(null);
 
@@ -83,7 +106,7 @@ function ListagemEncomenda() {
                               </IconButton>
                               <IconButton
                                 aria-label="delete"
-                                //onClick={() => excluir(dado.id)}
+                                onClick={() => excluir(dado.id)}
                               >
                                 <DeleteIcon />
                               </IconButton>

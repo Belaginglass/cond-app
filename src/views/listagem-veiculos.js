@@ -1,6 +1,9 @@
 import React from "react";
 
-import Card from "../components/card";
+import Card from '../components/card';
+
+import { mensagemSucesso, mensagemErro } from '../components/toastr';
+
 
 import { useNavigate } from "react-router-dom";
 
@@ -24,6 +27,28 @@ function ListagemVeiculos() {
   const editar = (id) => {
     navigate(`/cadastro-veiculos/${id}`);
   };
+
+  async function excluir(id) {
+    let data = JSON.stringify({ id });
+    let url = `${baseURL}/${id}`;
+    console.log(url);
+    await axios
+      .delete(url, data, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .then(function (response) {
+        mensagemSucesso(`Veículo excluído com sucesso!`);
+        setDados(
+          dados.filter((dado) => {
+            return dado.id !== id;
+          })
+        );
+      })
+      .catch(function (error) {
+        mensagemErro(`Erro ao excluir o veículo`);
+      });
+  }
+
 
   const [dados, setDados] = React.useState(null);
 
@@ -85,7 +110,7 @@ function ListagemVeiculos() {
                               </IconButton>
                               <IconButton
                                 aria-label="delete"
-                                //onClick={() => excluir(dado.id)}
+                                onClick={() => excluir(dado.id)}
                               >
                                 <DeleteIcon />
                               </IconButton>

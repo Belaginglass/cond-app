@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Card from '../components/card';
+import { mensagemSucesso, mensagemErro } from '../components/toastr';
+
 
 import { useNavigate } from "react-router-dom";
 
@@ -26,6 +28,27 @@ function ListagemCondominios() {
     const editar = (id) => {
         navigate(`/cadastro-condominio/${id}`);
     };
+
+    async function excluir(id) {
+        let data = JSON.stringify({ id });
+        let url = `${baseURL}/${id}`;
+        console.log(url);
+        await axios
+          .delete(url, data, {
+            headers: { 'Content-Type': 'application/json' },
+          })
+          .then(function (response) {
+            mensagemSucesso(`Condomínio excluído com sucesso!`);
+            setDados(
+              dados.filter((dado) => {
+                return dado.id !== id;
+              })
+            );
+          })
+          .catch(function (error) {
+            mensagemErro(`Erro ao excluir o Condomínio`);
+          });
+      }
 
     const [dados, setDados] = React.useState(null);
 
@@ -59,7 +82,6 @@ function ListagemCondominios() {
                                         <th scope='col'>Quantidade de Unidades</th>
                                         <th scope='col'>Quantidade de Blocos</th>
                                         <th scope='col'>Exige Indentificacao</th>
-                                        {/* <th scope='col'>Chave de Acesso</th> */}
                                         <th scope='col'>Ações</th>
                                     </tr>
                                 </thead>
@@ -72,7 +94,6 @@ function ListagemCondominios() {
                                             <td>{dado.quantidadeUnidades}</td>
                                             <td>{dado.quantidadeBlocos}</td>
                                             <td>{dado.exigeIndentificacao}</td>
-                                            {/* <td>{dado.chaveAcesso}</td> */}
                                             <td>
                                                 {<Stack spacing={1} padding={0} direction='row'>
                                                     <IconButton
@@ -83,7 +104,7 @@ function ListagemCondominios() {
                                                     </IconButton>
                                                     <IconButton
                                                         aria-label='delete'
-                                                    //onClick={() => excluir(dado.id)}
+                                                        onClick={() => excluir(dado.id)}
                                                     >
                                                         <DeleteIcon />
                                                     </IconButton>
