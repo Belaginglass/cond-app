@@ -20,6 +20,7 @@ function CadastroRealizacaoObras() {
 
   const [id, setId] = useState("");
   const [condominio, setCondominio] = useState("");
+  const [unidade, setUnidade] = useState(0);
   const [dataInicio, setDataInicio] = useState("");
   const [dataTermino, setDataTermino] = useState("");
   const [empresaPrestadora, setEmpresaPrestadora] = useState("");
@@ -32,6 +33,7 @@ function CadastroRealizacaoObras() {
     if (idParam == null) {
       setId("");
       setCondominio("");
+      setUnidade("");
       setDataInicio("");
       setDataTermino("");
       setEmpresaPrestadora("");
@@ -40,6 +42,7 @@ function CadastroRealizacaoObras() {
     } else {
       setId(dados.id);
       setCondominio(dados.condominio);
+      setUnidade(dados.unidade);
       setDataInicio(dados.data_inicio);
       setDataTermino(dados.data_termino);
       setEmpresaPrestadora(dados.empresa_prestadora);
@@ -52,6 +55,7 @@ function CadastroRealizacaoObras() {
     let data = {
       id,
       condominio,
+      unidade,
       data_inicio: dataInicio,
       data_termino: dataTermino,
       empresa_prestadora: empresaPrestadora,
@@ -93,6 +97,7 @@ function CadastroRealizacaoObras() {
       });
       setId(dados.id);
       setCondominio(dados.condominio);
+      setUnidade(dados.unidade);
       setDataInicio(dados.data_inicio);
       setDataTermino(dados.data_termino);
       setEmpresaPrestadora(dados.empresa_prestadora);
@@ -121,6 +126,17 @@ function CadastroRealizacaoObras() {
                   className="form-control"
                   name="condominio"
                   onChange={(e) => setCondominio(e.target.value)}
+                />
+              </FormGroup>
+              <FormGroup label="Unidade: *" htmlFor="inputUnidade">
+                <input
+                  type="number"
+                  id="inputUnidade"
+                  value={unidade}
+                  min={0}
+                  className="form-control"
+                  name="unidade"
+                  onChange={(e) => setUnidade(e.target.value)}
                 />
               </FormGroup>
               <FormGroup label="Data de Início: *" htmlFor="inputDataInicio">

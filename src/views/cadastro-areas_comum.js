@@ -24,7 +24,8 @@ function CadastroAreasComum() {
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState(false);
   const [capacidade_max, setCapacidadeMax] = useState(0);
-  const [horario_utilizacao, setHorarioUtilizacao] = useState(0);
+  const [horario_utilizacao_inicio, setHorarioUtilizacaoInicio] = useState(0);
+  const [horario_utilizacao_fim, setHorarioUtilizacaoFim] = useState(0);
   const [restricoes, setRestricoes] = useState(0);
 
   const [dados, setDados] = React.useState([]);
@@ -35,14 +36,16 @@ function CadastroAreasComum() {
       setNome("");
       setDescricao("");
       setCapacidadeMax("");
-      setHorarioUtilizacao("");
+      setHorarioUtilizacaoInicio("");
+      setHorarioUtilizacaoFim("");
       setRestricoes("");
     } else {
       setId(dados.id);
       setNome(dados.nome);
       setDescricao(dados.descricao);
       setCapacidadeMax(dados.capacidade_max);
-      setHorarioUtilizacao(dados.horario_utilizacao);
+      setHorarioUtilizacaoInicio(dados.horario_utilizacao_inicio);
+      setHorarioUtilizacaoFim(dados.horario_utilizacao_fim);
       setRestricoes(dados.restricoes);
     }
   }
@@ -53,7 +56,8 @@ function CadastroAreasComum() {
       nome,
       descricao,
       capacidade_max,
-      horario_utilizacao,
+      horario_utilizacao_inicio,
+      horario_utilizacao_fim,
       restricoes,
     };
     data = JSON.stringify(data);
@@ -93,7 +97,8 @@ function CadastroAreasComum() {
       setNome(dados.nome);
       setDescricao(dados.descricao);
       setCapacidadeMax(dados.capacidade_max);
-      setHorarioUtilizacao(dados.horario_utilizacao);
+      setHorarioUtilizacaoInicio(dados.horario_utilizacao_inicio);
+      setHorarioUtilizacaoFim(dados.horario_utilizacao_fim);
       setRestricoes(dados.restricoes);
     }
   }
@@ -144,16 +149,29 @@ function CadastroAreasComum() {
                 />
               </FormGroup>
               <FormGroup
-                label="HorarioUtilizacao: *"
+                label="Horario de Utilização Início: *"
                 htmlFor="inputHorarioUtilizacao"
               >
                 <input
                   type="text"
-                  id="inputHorarioUtilizacao"
-                  value={horario_utilizacao}
+                  id="inputHorarioUtilizacaoInicio"
+                  value={horario_utilizacao_inicio}
                   className="form-control"
-                  name="HorarioUtilizacao"
-                  onChange={(e) => setHorarioUtilizacao(e.target.value)}
+                  name="HorarioUtilizacaoInicio"
+                  onChange={(e) => setHorarioUtilizacaoInicio(e.target.value)}
+                />
+              </FormGroup>
+              <FormGroup
+                label="Horário de Utilização Fim: *"
+                htmlFor="inputHorarioUtilizacaoFim"
+              >
+                <input
+                  type="text"
+                  id="inputHorarioUtilizacaoFim"
+                  value={horario_utilizacao_fim}
+                  className="form-control"
+                  name="HorarioUtilizacaoFim"
+                  onChange={(e) => setHorarioUtilizacaoFim(e.target.value)}
                 />
               </FormGroup>
               <FormGroup label="Restricoes: *" htmlFor="inputRestricoes">

@@ -25,6 +25,8 @@ function CadastroPrestadoresServico() {
   const [celularComercial, setCelularComercial] = useState("");
   const [celularPessoal, setCelularPessoal] = useState("");
   const [email, setEmail] = useState("");
+  const [condominio, setCondominio] = useState("");
+  const [unidade, setUnidade] = useState(0);
   const [destino, setDestino] = useState("");
 
   const [dados, setDados] = useState([]);
@@ -38,6 +40,8 @@ function CadastroPrestadoresServico() {
       setCelularComercial("");
       setCelularPessoal("");
       setEmail("");
+      setCondominio("");
+      setUnidade("");
       setDestino("");
     } else {
       setId(dados.id);
@@ -47,6 +51,8 @@ function CadastroPrestadoresServico() {
       setCelularComercial(dados.celular_comercial);
       setCelularPessoal(dados.celular_pessoal);
       setEmail(dados.email);
+      setCondominio(dados.condominio);
+      setUnidade(dados.unidade);
       setDestino(dados.destino);
     }
   }
@@ -60,6 +66,8 @@ function CadastroPrestadoresServico() {
       celular_comercial: celularComercial,
       celular_pessoal: celularPessoal,
       email,
+      condominio,
+      unidade,
       destino,
     };
     data = JSON.stringify(data);
@@ -104,6 +112,8 @@ function CadastroPrestadoresServico() {
       setCelularComercial(dados.celular_comercial);
       setCelularPessoal(dados.celular_pessoal);
       setEmail(dados.email);
+      setCondominio(dados.condominio);
+      setUnidade(dados.unidade);
       setDestino(dados.destino);
     }
   }
@@ -186,9 +196,37 @@ function CadastroPrestadoresServico() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </FormGroup>
+              <FormGroup label="Condomínio: *" htmlFor="inputCondominio">
+                <select
+                  id="inputCondominio"
+                  value={condominio}
+                  className="form-control"
+                  name="condominio"
+                  onChange={(e) => setCondominio(e.target.value)}
+                >
+                  <option value="">Selecione</option>
+                  {dados.condominios &&
+                    dados.condominios.map((condominio) => (
+                      <option key={condominio.id} value={condominio.id}>
+                        {condominio.nome}
+                      </option>
+                    ))}
+                </select>
+              </FormGroup>
+              <FormGroup label="Unidade: *" htmlFor="inputUnidade">
+                <input
+                  type="number"
+                  id="inputUnidade"
+                  value={unidade}
+                  min={0}
+                  className="form-control"
+                  name="unidade"
+                  onChange={(e) => setUnidade(e.target.value)}
+                />
+              </FormGroup>
               <FormGroup label="Destino: *" htmlFor="inputDestino">
                 <input
-                  type="select"
+                  type="text"
                   id="inputDestino"
                   value={destino}
                   className="form-control"

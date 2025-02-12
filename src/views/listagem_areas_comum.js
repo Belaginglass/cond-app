@@ -1,8 +1,7 @@
 import React from "react";
 
 import Card from "../components/card";
-import { mensagemSucesso, mensagemErro } from '../components/toastr';
-
+import { mensagemSucesso, mensagemErro } from "../components/toastr";
 
 import { useNavigate } from "react-router-dom";
 
@@ -33,7 +32,7 @@ function ListagemAreasComum() {
     console.log(url);
     await axios
       .delete(url, data, {
-        headers: { 'Content-Type': 'application/json' },
+        headers: { "Content-Type": "application/json" },
       })
       .then(function (response) {
         mensagemSucesso(`Área Comum excluída com sucesso!`);
